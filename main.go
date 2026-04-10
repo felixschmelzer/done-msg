@@ -9,7 +9,7 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Fprintln(os.Stderr, "Usage: done-msg <command> [args...]\n       done --config")
+		fmt.Fprintln(os.Stderr, "Usage: ding <command> [args...]\n       done --config")
 		os.Exit(1)
 	}
 
@@ -23,7 +23,7 @@ func main() {
 
 	cfg, err := loadConfig()
 	if err != nil {
-		fmt.Fprintln(os.Stderr, "done-msg: no config found, run 'done --config' to set up")
+		fmt.Fprintln(os.Stderr, "ding: no config found, run 'done --config' to set up")
 		os.Exit(1)
 	}
 
@@ -73,7 +73,7 @@ func main() {
 
 	msg := buildMessage(cmd, exitCode, dur, finished)
 	if err := sendTelegram(cfg, msg); err != nil {
-		fmt.Fprintf(os.Stderr, "done-msg: notification failed: %v\n", err)
+		fmt.Fprintf(os.Stderr, "ding: notification failed: %v\n", err)
 	}
 
 	os.Exit(exitCode)

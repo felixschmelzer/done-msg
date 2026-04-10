@@ -1,4 +1,4 @@
-module github.com/felixschmelzer/done-msg
+module github.com/felixschmelzer/ding
 
 go 1.25.0
 
