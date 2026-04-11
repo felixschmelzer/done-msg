@@ -19,7 +19,7 @@ brew tap felixschmelzer/tap
 brew install ding
 ```
 
-**curl** (no Go required):
+**curl**:
 
 ```bash
 curl -fsSL https://github.com/felixschmelzer/ding/releases/latest/download/ding-$(uname -s | tr '[:upper:]' '[:lower:]')-$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/') -o /tmp/ding && chmod +x /tmp/ding && sudo mv /tmp/ding /usr/local/bin/ding
