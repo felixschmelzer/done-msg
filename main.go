@@ -22,7 +22,10 @@ Options:
 Examples:
   ding make build
   ding npm run test
-  ding ./deploy.sh`
+  ding ./deploy.sh
+  ding -h	# opens help
+  ding -c	# opens config ui
+`
 
 func main() {
 	if len(os.Args) < 2 {
