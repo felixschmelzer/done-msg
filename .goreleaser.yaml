@@ -27,7 +27,7 @@ archives:
     formats: [tar.gz]
     name_template: "ding-{{ .Os }}-{{ .Arch }}"
 
-homebrew_casks:
+homebrew:
   - name: ding
     ids: [tarball]
     repository:
