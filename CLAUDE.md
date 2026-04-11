@@ -18,7 +18,7 @@ No test files exist in this project.
 `ding` is a single-package Go application (4 files) that wraps any shell command, runs it in a PTY, and sends a Telegram notification when it finishes.
 
 **Entry point & flow (`main.go`):**
-- Parses CLI args; `--config` flag launches the TUI setup instead of running a command
+- Parses CLI args; `--config` flag launches the TUI setup, `--version` prints the version
 - Starts an optional goroutine for periodic "still running" Telegram pings (configurable interval)
 - Calls `runCommand()` from `runner.go`, then sends the final Telegram notification
 - Optionally prints a terminal summary if `ShowSummary` is set in config
@@ -38,6 +38,17 @@ type Config struct {
 }
 ```
 Config is stored at `~/.config/ding/config.json`.
+
+## CI / Releases
+
+Releases are fully automated via two GitHub Actions workflows:
+
+- **`.github/workflows/tag.yml`** — fires on push to `main`; runs semantic-release which creates a version tag for `fix:` (patch) and `feat:` (minor) commits. `chore:`, `refactor:`, etc. produce no release.
+- **`.github/workflows/release.yml`** — fires on tag push `v*`; runs goreleaser to cross-compile binaries for linux/darwin × amd64/arm64 and publish a GitHub Release.
+
+Config files: `.goreleaser.yaml`, `.releaserc.json`.
+
+The `version` variable in `main.go` is injected at build time via `-X main.version={{.Version}}`.
 
 ## Notes
 

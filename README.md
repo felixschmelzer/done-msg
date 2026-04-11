@@ -10,6 +10,23 @@ Exit: 0 | Duration: 2m 14s | Finished: 14:32:01
 
 ## Install
 
+### curl (no Go required)
+
+```bash
+curl -fsSL https://github.com/felixschmelzer/ding/releases/latest/download/ding-$(uname -s | tr '[:upper:]' '[:lower:]')-$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/') -o /usr/local/bin/ding && chmod +x /usr/local/bin/ding
+```
+
+| Platform | Download |
+|----------|----------|
+| macOS Apple Silicon | `ding-darwin-arm64` |
+| macOS Intel | `ding-darwin-amd64` |
+| Linux x86-64 | `ding-linux-amd64` |
+| Linux ARM64 | `ding-linux-arm64` |
+
+All releases: [github.com/felixschmelzer/ding/releases](https://github.com/felixschmelzer/ding/releases)
+
+### With Go installed
+
 ```bash
 go install github.com/felixschmelzer/ding@latest
 ```

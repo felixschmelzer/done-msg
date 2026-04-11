@@ -7,7 +7,14 @@ import (
 	"time"
 )
 
+var version = "dev"
+
 func main() {
+	if len(os.Args) == 2 && os.Args[1] == "--version" {
+		fmt.Println("ding", version)
+		os.Exit(0)
+	}
+
 	if len(os.Args) < 2 {
 		fmt.Fprintln(os.Stderr, "Usage: ding <command> [args...]\n       done --config")
 		os.Exit(1)
