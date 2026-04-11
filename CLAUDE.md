@@ -43,8 +43,7 @@ Config is stored at `~/.config/ding/config.json`.
 
 Releases are fully automated via two GitHub Actions workflows:
 
-- **`.github/workflows/tag.yml`** — fires on push to `main`; runs semantic-release which creates a version tag for `fix:` (patch) and `feat:` (minor) commits. `chore:`, `refactor:`, etc. produce no release.
-- **`.github/workflows/release.yml`** — fires on tag push `v*`; runs goreleaser to cross-compile binaries for linux/darwin × amd64/arm64 and publish a GitHub Release.
+- **`.github/workflows/release.yml`** — fires on push to `main`; runs semantic-release (creates a version tag + updates `CHANGELOG.md` for `fix:`/`feat:` commits), then conditionally runs goreleaser to cross-compile binaries for linux/darwin × amd64/arm64 and publish a GitHub Release. `chore:`, `refactor:`, etc. produce no release.
 
 Config files: `.goreleaser.yaml`, `.releaserc.json`.
 

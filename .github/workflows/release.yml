@@ -2,14 +2,16 @@ name: Release
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - main
 
 permissions:
   contents: write
+  issues: write
+  pull-requests: write
 
 jobs:
-  goreleaser:
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -23,7 +25,22 @@ jobs:
           go-version-file: go.mod
           cache: true
 
+      - name: Semantic Release
+        id: semantic
+        uses: cycjimmy/semantic-release-action@v4
+        with:
+          extra_plugins: |
+            @semantic-release/changelog
+            @semantic-release/git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fetch new tag
+        if: steps.semantic.outputs.new_release_published == 'true'
+        run: git fetch --tags origin
+
       - name: Run GoReleaser
+        if: steps.semantic.outputs.new_release_published == 'true'
         uses: goreleaser/goreleaser-action@v7
         with:
           distribution: goreleaser
