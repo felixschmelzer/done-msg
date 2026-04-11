@@ -20,7 +20,7 @@ builds:
       - -trimpath
 
 archives:
-  - format: binary
+  - formats: [binary]
     name_template: "ding-{{ .Os }}-{{ .Arch }}"
 
 checksum:
