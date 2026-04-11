@@ -1,3 +1,10 @@
+## [1.4.6](https://github.com/felixschmelzer/ding/compare/v1.4.5...v1.4.6) (2026-04-11)
+
+
+### Bug Fixes
+
+* removed unnecessary new line ([c81a091](https://github.com/felixschmelzer/ding/commit/c81a09187e595743bee4a3352923da1adc688cfd))
+
 ## [1.4.5](https://github.com/felixschmelzer/ding/compare/v1.4.4...v1.4.5) (2026-04-11)
 
 
